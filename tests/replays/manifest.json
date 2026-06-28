@@ -1,0 +1,335 @@
+[
+  {
+    "file": "lobby__20260307_220618__last.png",
+    "label": "STATE_LOBBY",
+    "note": "難度選擇+快速編隊/出發;與 preflight 相同(該 session 點擊無效)",
+    "source_session": "20260307_220618",
+    "source_path": "logs/session_failures/20260307_220618/last_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "lobby__20260307_220618__preflight.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260307_220618",
+    "source_path": "logs/session_failures/20260307_220618/preflight_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "lobby__20260307_223354__last.png",
+    "label": "STATE_LOBBY",
+    "note": "同 220618 畫面",
+    "source_session": "20260307_223354",
+    "source_path": "logs/session_failures/20260307_223354/last_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "lobby__20260307_223354__preflight.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260307_223354",
+    "source_path": "logs/session_failures/20260307_223354/preflight_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "prepare__20260308_003031__last.png",
+    "label": "STATE_PREPARE",
+    "note": "秘紋組合畫面;含「自動編隊」字樣(FORMATION 關鍵字跨畫面誤判實例)",
+    "source_session": "20260308_003031",
+    "source_path": "logs/session_failures/20260308_003031/last_frame.png",
+    "summary_state": "STATE_PREPARE",
+    "summary_reason": "handler_exception"
+  },
+  {
+    "file": "prepare__20260308_003057__last.png",
+    "label": "STATE_PREPARE",
+    "note": "同 003031",
+    "source_session": "20260308_003057",
+    "source_path": "logs/session_failures/20260308_003057/last_frame.png",
+    "summary_state": "STATE_PREPARE",
+    "summary_reason": "handler_exception"
+  },
+  {
+    "file": "shop_choice__20260308_004512__last.png",
+    "label": "STATE_SHOP_CHOICE",
+    "note": "進商店三選一:去商店購物/強化/直接上樓",
+    "source_session": "20260308_004512",
+    "source_path": "logs/session_failures/20260308_004512/last_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "shop__20260308_141258__last.png",
+    "label": "STATE_SHOP",
+    "note": "商店內部貨架;bot 當時認知 SHOP_CHOICE(誤判)",
+    "source_session": "20260308_141258",
+    "source_path": "logs/session_failures/20260308_141258/last_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "potential_select__20260308_145535__last.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 upgrade_pick:選一張潛能卡片強化,2 金卡+拿走;bot 認知 SHOP_CHOICE(誤判)",
+    "source_session": "20260308_145535",
+    "source_path": "logs/session_failures/20260308_145535/last_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "potential_select__20260308_185814__last.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 levelup_select:隊伍等級提升至2級,3 卡+拿走;bot 認知 SHOP_CHOICE(誤判)",
+    "source_session": "20260308_185814",
+    "source_path": "logs/session_failures/20260308_185814/last_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "lobby__20260531_195246__last.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260531_195246",
+    "source_path": "logs/session_failures/20260531_195246/last_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "lobby__20260531_195246__preflight.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260531_195246",
+    "source_path": "logs/session_failures/20260531_195246/preflight_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "unknown__20260531_195529__last.png",
+    "label": "STATE_UNKNOWN",
+    "note": "非遊戲畫面:截到 IDE diff 視窗;Phase 1.2 UNKNOWN 雜訊測試語料",
+    "source_session": "20260531_195529",
+    "source_path": "logs/session_failures/20260531_195529/last_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "lobby__20260531_195529__preflight.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260531_195529",
+    "source_path": "logs/session_failures/20260531_195529/preflight_frame.png",
+    "summary_state": "STATE_LOBBY",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "event__20260531_195825__last.png",
+    "label": "STATE_EVENT",
+    "note": "變體 note_cost:音樂治療事件,選項消耗音符;bot 認知 SHOP(誤判)",
+    "source_session": "20260531_195825",
+    "source_path": "logs/session_failures/20260531_195825/last_frame.png",
+    "summary_state": "STATE_SHOP",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "lobby__20260531_195825__preflight.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260531_195825",
+    "source_path": "logs/session_failures/20260531_195825/preflight_frame.png",
+    "summary_state": "STATE_SHOP",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "potential_select__20260531_200253__last.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 levelup_select:隊伍等級提升至3級",
+    "source_session": "20260531_200253",
+    "source_path": "logs/session_failures/20260531_200253/last_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "event__20260531_200253__preflight.png",
+    "label": "STATE_EVENT",
+    "note": "前一場(195825)殘留的音樂治療事件;preflight 不可假設為大廳",
+    "source_session": "20260531_200253",
+    "source_path": "logs/session_failures/20260531_200253/preflight_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "potential_select__20260531_200645__last.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 upgrade_pick:2 卡強化選擇",
+    "source_session": "20260531_200645",
+    "source_path": "logs/session_failures/20260531_200645/last_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "potential_select__20260531_200645__preflight.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 levelup_select:前一場殘留",
+    "source_session": "20260531_200645",
+    "source_path": "logs/session_failures/20260531_200645/preflight_frame.png",
+    "summary_state": "STATE_SHOP_CHOICE",
+    "summary_reason": "state_stuck_no_progress"
+  },
+  {
+    "file": "shop__20260531_201841__last.png",
+    "label": "STATE_SHOP",
+    "note": "變體 purchase_modal:購買彈窗(潛能特飲/單價160/優惠);bot 認知 POTENTIAL_SELECT(誤判)",
+    "source_session": "20260531_201841",
+    "source_path": "logs/session_failures/20260531_201841/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "potential_select__20260531_201841__preflight.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 upgrade_pick:前一場殘留",
+    "source_session": "20260531_201841",
+    "source_path": "logs/session_failures/20260531_201841/preflight_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "event__20260602_210622__last.png",
+    "label": "STATE_EVENT",
+    "note": "變體 mirror:命運之鏡事件;bot 認知 POTENTIAL_SELECT(誤判)",
+    "source_session": "20260602_210622",
+    "source_path": "logs/session_failures/20260602_210622/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "lobby__20260602_210622__preflight.png",
+    "label": "STATE_LOBBY",
+    "note": "",
+    "source_session": "20260602_210622",
+    "source_path": "logs/session_failures/20260602_210622/preflight_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "event__20260602_214237__last.png",
+    "label": "STATE_EVENT",
+    "note": "變體 mirror",
+    "source_session": "20260602_214237",
+    "source_path": "logs/session_failures/20260602_214237/last_frame.png",
+    "summary_state": "STATE_EVENT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "event__20260602_214237__preflight.png",
+    "label": "STATE_EVENT",
+    "note": "變體 mirror:前一場殘留",
+    "source_session": "20260602_214237",
+    "source_path": "logs/session_failures/20260602_214237/preflight_frame.png",
+    "summary_state": "STATE_EVENT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "event__20260602_214617__last.png",
+    "label": "STATE_EVENT",
+    "note": "變體 life_exchange:生命值交換潛能事件;bot 認知 POTENTIAL_SELECT(誤判)",
+    "source_session": "20260602_214617",
+    "source_path": "logs/session_failures/20260602_214617/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "event__20260602_214617__preflight.png",
+    "label": "STATE_EVENT",
+    "note": "變體 mirror:前一場殘留",
+    "source_session": "20260602_214617",
+    "source_path": "logs/session_failures/20260602_214617/preflight_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "shop__20260602_215007__last.png",
+    "label": "STATE_SHOP",
+    "note": "變體 purchase_modal;bot 認知 POTENTIAL_SELECT(誤判)",
+    "source_session": "20260602_215007",
+    "source_path": "logs/session_failures/20260602_215007/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "event__20260602_215007__preflight.png",
+    "label": "STATE_EVENT",
+    "note": "變體 life_exchange:前一場殘留",
+    "source_session": "20260602_215007",
+    "source_path": "logs/session_failures/20260602_215007/preflight_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "shop__20260602_215411__last.png",
+    "label": "STATE_SHOP",
+    "note": "商店內部貨架;bot 認知 POTENTIAL_SELECT(誤判)",
+    "source_session": "20260602_215411",
+    "source_path": "logs/session_failures/20260602_215411/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "shop__20260602_215411__preflight.png",
+    "label": "STATE_SHOP",
+    "note": "商店內部貨架:前一場殘留",
+    "source_session": "20260602_215411",
+    "source_path": "logs/session_failures/20260602_215411/preflight_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "potential_select__20260602_215757__last.png",
+    "label": "STATE_POTENTIAL_SELECT",
+    "note": "變體 upgrade_pick:3 金卡強化選擇+拿走(REPAIR_PLAN 典型軌跡 session)",
+    "source_session": "20260602_215757",
+    "source_path": "logs/session_failures/20260602_215757/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "shop__20260602_215757__preflight.png",
+    "label": "STATE_SHOP",
+    "note": "商店內部貨架:前一場殘留",
+    "source_session": "20260602_215757",
+    "source_path": "logs/session_failures/20260602_215757/preflight_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "formation__20260612_233510__last.png",
+    "label": "STATE_FORMATION",
+    "note": "L3 Phase1 驗收第一輪誤判實例:編隊畫面(編隊/自動編隊/下一步)被 potential_select_visual 以 1.05 誤判為 POTENTIAL_SELECT(潛能單一通用詞+右下青色「下一步」過色錨)",
+    "source_session": "20260612_233510",
+    "source_path": "logs/session_failures/20260612_233510/last_frame.png",
+    "summary_state": "STATE_POTENTIAL_SELECT",
+    "summary_reason": "external_watchdog_stuck"
+  },
+  {
+    "file": "tap_continue__20260612_234815__last.png",
+    "label": "STATE_TAP_CONTINUE",
+    "note": "L3 Phase1 驗收第二輪(史上最深推進):SHOP 內 click_verified 點商店卡(潛能特飲)成功後,出現商店 NPC(珀蘿娜)招呼對話畫面(視覺小說式:名牌+對白氣泡+右下 Space 提示)。對白內容隨 NPC/場合變化,無任何簽名命中→UNKNOWN×4→state_unknown_persistent finalize(機制正確)。使用者證實舊版遇此畫面點空白處推進,故映射 STATE_TAP_CONTINUE。OCR 穩定 token:右下『Space』提示(對白內容不可入簽名)。「Space」單獨不足(購買彈窗 shop__20260531_201841 與多數 shop/event/potential 畫面皆有 Space),故以『Space + 所有已知畫面的高鑑別詞 negative_keywords』組合,只在無任何已知畫面內容時命中。",
+    "source_session": "20260612_234815",
+    "source_path": "logs/session_failures/20260612_234815/last_frame.png",
+    "summary_state": "STATE_SHOP",
+    "summary_reason": "state_unknown_persistent"
+  },
+  {
+    "file": "discard_confirm_ticket__20260616_190456.png",
+    "label": "STATE_DISCARD_CONFIRM",
+    "note": "L3 20260616_190456:結算 rating 24 不達標→點垃圾桶→『征途票根達上限』解散確認彈窗(標題『提醒』,內文『本週可獲得的征途票根數量已達上限/本次解散紀錄將無法獲得征途票根/是否確認解散?』,底部『取消』(499,508)/『確認』(780,507))。bug:handle_discard_confirm 的 TextTarget(CONFIRM_BUTTON_TOKENS) 無 ROI 限制,OCR 先讀到內文『是否確認解散?』(y=363,含『確認』二字)→ 點內文無效 → ExpectRoiChange 永不觸發 → 12 次無進度 state_stuck_no_progress。內文塊 y≤382、底部按鈕 y≥494,以底部 ROI 排除內文。",
+    "source_session": "20260616_190456",
+    "source_path": "logs/session_failures/20260616_190456/last_frame.png",
+    "summary_state": "STATE_DISCARD_CONFIRM",
+    "summary_reason": "state_stuck_no_progress"
+  }
+]

@@ -1,0 +1,70 @@
+{
+    "_comment": "13種音符的模板編號對照表。note_1~7為固定音符（每塔皆可獲得），note_8~13為元素音符（依塔別僅取得2種）。",
+    "notes": [
+        {
+            "id": "note_1",
+            "name": "強攻之音",
+            "element": false
+        },
+        {
+            "id": "note_2",
+            "name": "幸運之音",
+            "element": false
+        },
+        {
+            "id": "note_3",
+            "name": "爆發之音",
+            "element": false
+        },
+        {
+            "id": "note_4",
+            "name": "體力之音",
+            "element": false
+        },
+        {
+            "id": "note_5",
+            "name": "專注之音",
+            "element": false
+        },
+        {
+            "id": "note_6",
+            "name": "技巧之音",
+            "element": false
+        },
+        {
+            "id": "note_7",
+            "name": "絕招之音",
+            "element": false
+        },
+        {
+            "id": "note_8",
+            "name": "火之音",
+            "element": true
+        },
+        {
+            "id": "note_9",
+            "name": "暗之音",
+            "element": true
+        },
+        {
+            "id": "note_10",
+            "name": "水之音",
+            "element": true
+        },
+        {
+            "id": "note_11",
+            "name": "風之音",
+            "element": true
+        },
+        {
+            "id": "note_12",
+            "name": "地之音",
+            "element": true
+        },
+        {
+            "id": "note_13",
+            "name": "光之音",
+            "element": true
+        }
+    ]
+}

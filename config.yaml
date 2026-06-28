@@ -1,0 +1,119 @@
+window:
+  name: StellaSora
+  capture_mode: auto
+input:
+  mode: foreground
+run:
+  max_runs: 1
+  stop_on_target_level: 0
+vision:
+  detector: v2
+bot:
+  poll_interval: 1.0
+  click_settle: 1.0
+  take_settle_delay: 0.5
+  adaptive_settle:
+    enabled: false
+    stable_count: 2
+    sample_interval: 0.1
+    min_delay: 0.25
+  ocr_cache:
+    enabled: true
+    max_entries: 8
+  max_reconnect_attempts: 5
+  max_shop_refresh: 1
+  hotkey_stop: ctrl+q
+  max_unknown_streak: 4
+  stuck_poll_limit: 12
+  stuck_text_jaccard: 0.3
+  stuck_exempt_states:
+  - STATE_FAST_BATTLE
+event:
+  strategy: aggressive
+  refuse_note_cost: true
+  aggressive_gamble_mode: true
+  same_option_repeat_limit: 3
+decision:
+  mode: recommendation_badge
+  required_target_level: 6
+  prefer_never_picked: true
+  prefer_higher_gain: true
+  min_level_threshold: 0
+  upgrade_strategy: minimize_overflow
+  recommendation_target:
+    enabled: true
+  required:
+  - 爆裂追擊
+  - 快拳連打
+  - 終結打擊
+  - 童話法則
+  - 慶典再啟
+  - 伏筆驗證
+  - 客串回
+  backup:
+  - 勇猛挑戰
+  - 回旋反擊
+  - 巔峰狀態
+  - 禮炮雙響
+  - 振奮炮擊
+  - 完美接戲
+  - 視覺衝擊
+  level_required:
+  - name: 與刃共舞
+    target_level: 5
+  - name: 疾速拔刀
+    target_level: 1
+  max_reroll_before_backup: 3
+  guaranteed:
+  - 貓貓拳
+  - 多發彈
+  - 火雨傾盆
+  - 特別裝藥
+  - 明日·薪火
+  - 薪火的再燃
+  backup_groups:
+  - - 勇猛挑戰
+    - 回旋反擊
+    - 巔峰狀態
+  - - 禮炮雙響
+    - 振奮炮擊
+  - - 完美接戲
+    - 視覺衝擊
+ocr:
+  languages:
+  - ch_tra
+  - en
+  gpu: true
+  priority_list_path: data/priority_list.json
+card_counter:
+  enabled: true
+  initial_total: 0
+  target_total: 78
+shop:
+  upgrade:
+    enabled: true
+    times_by_visit:
+      1: 2
+      2: 3
+    price_ceiling: 547
+  order: upgrade_first
+  order_by_visit: {}
+  refresh:
+    trigger: when_gap
+    start_from_visit: 4
+  buy:
+    strategy: cards_then_notes
+    affordability: true
+    prefer_discount: true
+    discount_scope: notes_only
+    buy_non_discounted: true
+    note_priority: []
+  post_target:
+    note_spree:
+      enabled: false
+      notes: []
+      max_spend: 0
+result:
+  rating_threshold: 30
+  potential_total_threshold: 0
+  require_all_secrets: false

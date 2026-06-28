@@ -1,0 +1,318 @@
+# ─────────────────────────────────────────────────────────────
+# 畫面提示字 tokens 單一來源 (data/screen_tokens.yaml)
+# ─────────────────────────────────────────────────────────────
+#
+# 這份檔案是「畫面提示字 / 按鈕文字 tokens」的可編輯單一來源。
+# 遊戲版本更新導致畫面文字改變時,非工程師可直接在這裡改字,不必動 .py。
+#
+# 規則:
+#   - vision/signatures.py 於 import 時讀這份 YAML,把每組載入成 module-level
+#     的 tuple 常數;state_detector.py / states.py 一律 from vision import
+#     signatures 取用,不會直接讀本檔。
+#   - 每個 key 對應一組 token(字串清單)。改字 = 改這裡的清單。
+#   - signatures.py 對每組都保留一份「硬寫 fallback」:本檔不存在/壞掉/缺某組時
+#     會退回 fallback 並記 warning,絕不會讓程式 import 失敗或行為改變。
+#     因此「刪掉某組」不會壞掉程式,但會悄悄退回舊字 —— 要改字請就地改清單,
+#     不要整組刪除。
+#   - 簡體變體 / OCR 糊字變體刻意保留(實機 EasyOCR 會把字糊成那樣),改字時
+#     一併保留變體,否則某些畫面會漏判。每組末尾的中文註解說明該變體來由。
+#
+# 不在本檔的東西(仍寫在 vision/signatures.py,不要搬進來):
+#   - 衍生 / 組合常數(由多組相加,如 EXPLORE_COMPLETE_NEXT_TOKENS、
+#     RESULT_NEXT_TOKENS、NPC_DIALOGUE_NEGATIVE_TOKENS)。
+#   - 色錨 ColorAnchor、文字判定函式、ScreenSignature / SIGNATURES 簽名表、
+#     classify / score_signature 評分邏輯。
+#
+# key 名 = signatures.py 常數名的小寫;value = 字串清單。
+# ─────────────────────────────────────────────────────────────
+
+# 事件選項提示字(STATE_EVENT;event_choice 簽名 + handle_event 決策)
+event_choice_hints:
+  - "我獨愛"
+  - "我独爱"
+  - "我想聽"
+  - "我想听"
+  - "我聽所有"
+  - "我听所有"
+  - "傾聽所有"        # 實機 OCR 變體:「我傾聽所有」(event__20260531_195825)
+  - "隨機音符"
+  - "随机音符"
+  # 單獨「隨機」= 隨機/賭博事件通用獎勵特徵(語料證實只在事件,零誤判;使用者拍板「用獎勵判斷」)。
+  # L3 20260614_231656:綠髮 NPC「神奇遊戲機」交易事件漏判 → potential_select_visual 誤判 → UNKNOWN 卡死。
+  - "隨機"
+  - "随机"
+  - "命運之鏡"
+  - "命运之镜"
+  - "踏入命運"
+  - "踏入命运"
+  - "魔鏡"
+  - "魔镜"
+  - "好危險"
+  - "好危险"
+  - "生命力"
+  - "籌碼"
+  - "筹码"
+  - "分我一些"
+  - "試試"
+  - "试试"
+  - "隨機獲得"
+  - "随机获得"
+  # 強化/升級事件(一次性,bundle 20260613_191440):NPC「你還可以變得更強大…」+ 四選項
+  - "變成最強"
+  - "变成最强"
+  - "變得更強"
+  - "变得更强"
+  - "已經夠強"
+  - "已经够强"
+  - "你還可以變得更強"
+  - "你还可以变得更强"
+  # 機率/賭博類事件(session 20260614_131730「理性的決斷」三選一)
+  - "機率獲得"
+  - "机率获得"
+  - "機率失去"
+  - "机率失去"
+  - "機率損失"
+  - "机率损失"
+  - "理性的決斷"
+  # 升級機 NPC 事件(花錢換潛能,2026-06-14)「想用你的運氣獲得一些好處嗎?」
+  - "想用你的運氣"
+  - "想用你的运气"
+  - "獲得一些好處"
+  - "获得一些好处"
+
+# 強化/升級事件的「升級選項」判別字(states.py handle_event 挑稀有潛能用)
+upgrade_event_marker_tokens:
+  - "變成最強"
+  - "变成最强"
+  - "變得更強"
+  - "变得更强"
+  - "已經夠強"
+  - "已经够强"
+
+# 升級事件中「稀有潛能」獎勵列判別字
+upgrade_event_rare_reward_tokens:
+  - "稀有"
+
+# 潛能選擇提示字(STATE_POTENTIAL_SELECT;potential_select_text 簽名)
+potential_select_hints:
+  - "拿走"
+  - "未收錄"
+  - "未收录"
+  - "更新"
+  - "reroll"
+  - "?輯粥"            # 實機 OCR 誤讀變體
+  # 免費強化的升級卡選擇畫面標題(session 20260614_133706),與 upgrade_single_card_header_tokens 同源
+  - "選擇一張"
+  - "选择一张"
+  - "潛能卡片"
+  - "潜能卡片"
+
+# 潛能卡片提示字(potential_select_visual 簽名)
+potential_card_hints:
+  - "等級"
+  - "等级"
+  - "蝑"               # 實機 OCR 誤讀變體
+  - "推薦"
+  - "推荐"
+  - "潛能"
+  - "潜能"
+
+# 推薦徽章文字(is_recommendation_text)
+recommend_text_tokens:
+  - "推薦"
+  - "推荐"
+
+# 視覺小說式「按 Space 推進」提示字(跨畫面通用,須搭配否決字)
+space_continue_hint_tokens:
+  - "Space"
+
+# 「啟動協奏技能!」音符畫面 header + footer(concert_skill_activated 簽名)
+concert_skill_activate_tokens:
+  - "啟動協奏技能"
+  - "點擊空白處繼續"
+
+# 離塔後「默契提升」(好感度/羈絆)獎勵畫面(rapport_boost 簽名 → 點空白推進)
+# L3 20260614_173024:最終房間「離開星塔」後出現,無簽名 → UNKNOWN 卡死。
+rapport_boost_tokens:
+  - "默契提升"
+  - "默契提昇"        # OCR 異體字(昇/升)
+  - "默契值提升"      # 部分版本顯示「默契值」
+
+# 潛能選擇全頁關鍵字(potential_select_keywords 簽名)
+potential_select_keywords:
+  - "潛能選擇"
+  - "選擇潛能"
+  - "請選擇一個潛能"
+  - "重新抽取"
+  - "隊伍等級提升"
+
+# ── 商店字群(彈窗 / 貨架共用)──
+shop_buy_tokens:
+  - "購買"
+  - "购买"
+
+shop_price_tokens:
+  - "單價"
+  - "单价"
+
+shop_item_tokens:
+  - "潛能特飲"
+  - "潜能特饮"
+  - "特飲"
+  - "特饮"
+
+shop_control_tokens:
+  - "剩餘次"
+  - "剩余次"
+  - "背包"
+  - "返回"
+  - "查看"
+  - "更新"
+
+# 離開商店按鈕文字。「坦回」= 實機 EasyOCR 把「返回」糊成的變體(session 20260613_212202)
+shop_leave_tokens:
+  - "離開"
+  - "返回"
+  - "坦回"
+  - "離開商店"
+  - "離開星塔"
+
+shop_note_goods_tokens:
+  - "體力之音"
+  - "体力之音"
+  - "專注之音"
+  - "专注之音"
+  - "風之音"
+  - "风之音"
+
+# 商店刷新貨架 = 快捷鍵 Q(使用者實機確認 2026-06-14)。下列文字僅無鍵盤能力時的後備點擊
+shop_refresh_tokens:
+  - "刷新"
+  - "刷新商店"
+
+# 商店「優惠/折扣」標記字(原價劃掉/紅圈優惠)。音符階段掃此字點購;step7/c 起亦供買卡優惠優先
+shop_discount_tokens:
+  - "優惠"
+  - "折扣"
+
+# ── 按鈕 / 選項文字 ──
+take_button_tokens:
+  - "拿走"
+
+reroll_button_tokens:
+  - "Reroll"
+  - "重新抽取"
+  - "重新選取"
+  - "重抽"
+  - "更新"
+
+upgrade_header_tokens:
+  - "強化"
+  - "强化"
+  - "升級"
+  - "升级"
+
+# 免費強化「選擇一張潛能卡片強化吧!」= 置中單卡;「一張」量詞區分一般 3 卡選單
+upgrade_single_card_header_tokens:
+  - "選擇一張"
+  - "选择一张"
+
+shop_choice_upgrade_option_tokens:
+  - "強化"
+  - "免費"
+
+# 強化選項內「免費」標記(命中即視為免費=單價 0,一律強化)
+shop_upgrade_free_tokens:
+  - "免費"
+  - "免费"
+
+# 進商店(逛/購物)。最終房間「去商店逛逛」,一般房間「去商店購物」
+shop_choice_enter_option_tokens:
+  - "去商店購物"
+  - "進入商店"
+  - "商店購物"
+  - "去商店逛逛"
+  - "逛逛"
+
+# 離場/略過 = 不在此商店多做。「離開星塔」= 最終房間離塔(完成本輪)
+shop_choice_skip_option_tokens:
+  - "不要了"
+  - "直接上樓"
+  - "略過"
+  - "跳過"
+  - "離開星塔"
+  - "離塔"
+  - "離開"
+
+fast_battle_button_tokens:
+  - "快速戰鬥"
+
+next_step_button_tokens:
+  - "下一步"
+
+prepare_start_button_tokens:
+  - "開始探索"
+  - "開始戰鬥"
+  - "戰鬥開始"
+  - "快速戰鬥"
+  - "確定"
+
+reconnect_button_tokens:
+  - "重新連線"
+  - "重試"
+  - "確認"
+
+settlement_return_tokens:
+  - "返回"
+  - "確認"
+
+# 「是否離開星塔?」離塔確認彈窗(與 shop_choice 的「離開星塔」按鈕的區別在「是否」)
+leave_tower_confirm_tokens:
+  - "是否離開星塔"
+  - "尚有未使用"
+  - "輝光幣"
+
+# 確認鈕文字(離塔確認彈窗「確認」)
+confirm_button_tokens:
+  - "確認"
+  - "确认"
+
+# ── 結算畫面(STATE_RESULT)按鈕 / 狀態文字(GAME_MECHANICS F1/F1b/F2/F2b)──
+# 結算/紀錄畫面的高鑑別度標記字(result_keywords 簽名偵測用 + potential_select_visual
+# 否決用,單一來源)。此畫面有「潛能收集/收藏」分頁(含「潛能」)+ 底部彩色圖示格,偶會
+# 命中 potential_select_visual 的弱色錨(底部青色)→ 被誤判 STATE_POTENTIAL_SELECT 卡死
+# (L3 20260614_220443:色錨 ratio 0.039 剛過 0.035 門檻)。這些字只在結算畫面出現
+# (語料全掃僅 result__* 命中),真潛能選卡畫面絕無 →任一命中即判結算 / 否決選卡視覺簽名。
+# 「祕紋技能」是固定分頁(OCR conf 0.999,記錄改名也在),最穩;「未命名紀錄」會隨改名變。
+result_screen_marker_tokens:
+  - "儲存紀錄"
+  - "未命名紀錄"
+  - "探索結束"
+  - "評分"
+  - "祕紋技能"
+
+# 右下「儲存紀錄」鈕(達標 → 儲存)
+result_save_button_tokens:
+  - "儲存紀錄"
+  - "保存紀錄"
+  - "儲存"
+  - "保存"
+
+# 左下鎖定狀態切換鈕:「已鎖定」=鎖定中 → 點它解鎖才能丟棄
+result_locked_tokens:
+  - "已鎖定"
+  - "已锁定"
+
+result_unlocked_tokens:
+  - "未鎖定"
+  - "未锁定"
+
+# 「是否確定解散?」解散確認彈窗(點垃圾桶後彈出,取消/確認)
+discard_confirm_tokens:
+  - "是否確定解散"
+  - "確定解散"
+  - "解散目前紀錄"
+  - "確定解散嗎"
+  # 票券(征途票根)積到上限才出的解散確認彈窗問句是「是否確認解散」(確認≠確定,使用者實機截圖)
+  - "是否確認解散"
+  - "確認解散"

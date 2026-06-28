@@ -1,0 +1,56 @@
+# Python .gitignore
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+venv/
+ENV/
+
+# Project Logs
+*.log
+logs/
+debug_bot.log
+bot.log
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db
+latest_scene.jpg
+test_output.jpg
+.tmp_test/
+.tmp_tests/
+
+# Antigravity / AI artifacts
+.gemini/
+.atlas/
+.agents/work_reports/
+.agents/vscode_reports/
+implementation_plan.md
+TODO.md
+
+# Ignore all md files except top-level README.md
+*.md
+!README.md
+!CONTRIBUTING.md
+!SECURITY.md
+!DISCLAIMER.md
+!assets/guide_images/COMMUNITY_GUIDES.md
+!CLAUDE.md
+!docs/*.md
+
+# 遊戲衍生截圖 / 回放測試語料 — 保留在本機,排除於版控之外(著作權)
+# 要跑回放測試請自備對應語料放回這些目錄
+tests/replays/frames/
+tests/replays/notes_calib/
+tests/replays/ocr_cache/
+tests/replays/*.jsonl
+assets/guide_images/*.png
+
+# Data / Model weights (If any large ones exist)
+*.onnx
+*.pth
+*.t7
+
+# editor/agent backup artifact
+.gitignore.bak

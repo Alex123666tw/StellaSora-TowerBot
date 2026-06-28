@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星塔旅人 GUI mockup</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.5.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --color-background-primary:#fff;--color-background-secondary:#F7F6F1;
+  --color-text-primary:#1b1b19;--color-text-secondary:#5F5E5A;--color-text-tertiary:#888780;
+  --color-border-tertiary:rgba(0,0,0,0.12);--color-border-secondary:rgba(0,0,0,0.22);
+  --border-radius-md:8px;--border-radius-lg:12px;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei","PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --color-background-primary:#26262a;--color-background-secondary:#2f2f34;
+  --color-text-primary:#ECECEA;--color-text-secondary:#B4B2A9;--color-text-tertiary:#888780;
+  --color-border-tertiary:rgba(255,255,255,0.14);--color-border-secondary:rgba(255,255,255,0.24);
+}body{background:#1d1d20 !important;}}
+*{box-sizing:border-box;}
+body{background:#F3F3F3;margin:0;padding:0 24px 60px;font-family:var(--font-sans);color:var(--color-text-primary);}
+.wrap{max-width:760px;margin:0 auto;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+.plabel{max-width:760px;margin:32px auto 0;font-size:13px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.04em;text-transform:uppercase;border-bottom:0.5px solid var(--color-border-secondary);padding-bottom:6px;}
+.note{max-width:760px;margin:8px auto 0;font-size:13px;color:var(--color-text-tertiary);line-height:1.7;}
+.tabs{display:flex;gap:2px;margin-bottom:14px;border-bottom:0.5px solid var(--color-border-tertiary);}
+.tab{padding:8px 20px;font-size:14px;color:var(--color-text-secondary);}
+.tab.on{font-weight:500;color:var(--color-text-primary);}
+.tab.s{border-bottom:2px solid #534AB7;}.tab.m{border-bottom:2px solid #1D9E75;}.tab.a{border-bottom:2px solid #BA7517;}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:9px 13px;margin-bottom:14px;}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:13px;transition:background .15s,border-color .15s;}
+.btn.pri{background:#1D9E75;color:#fff;border:none;}
+.btn.lk{opacity:.4;}
+.mini{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:12px;color:var(--color-text-secondary);}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:0.3rem 1.1rem 0.7rem;}
+.mh{display:flex;align-items:center;gap:8px;padding:10px 0 2px;font-size:14px;font-weight:500;}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:0.5px solid var(--color-border-tertiary);font-size:13px;}
+.row.off{color:var(--color-text-tertiary);}
+.lab{display:flex;align-items:center;gap:7px;}
+.sel{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:12px;transition:border-color .15s;}
+.num{display:inline-flex;align-items:center;justify-content:center;width:52px;padding:5px 0;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:12px;}
+.sw{display:inline-flex;width:36px;height:21px;border-radius:11px;align-items:center;padding:0 3px;transition:background .2s;}
+.sw>i{width:15px;height:15px;border-radius:50%;background:#fff;display:block;}
+.sw.y{background:#1D9E75;justify-content:flex-end;}.sw.n{background:#D3D1C7;justify-content:flex-start;}.sw.lk{opacity:.5;}
+.bt{font-size:11px;padding:1px 7px;border-radius:var(--border-radius-md);}
+.bt.t{color:#0C447C;background:#E6F1FB;}.bt.adv{color:#5F5E5A;background:#F1EFE8;}.bt.d{color:#A32D2D;background:#FCEBEB;}
+.col{display:flex;flex-direction:column;gap:12px;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;}
+.dim{max-width:760px;margin:0 auto;min-height:340px;background:rgba(0,0,0,0.42);border-radius:var(--border-radius-lg);display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal{background:var(--color-background-primary);border-radius:var(--border-radius-lg);padding:1.1rem 1.4rem;width:560px;max-width:100%;}
+i.tk{font-size:15px;}
+@keyframes ssPulse{0%,100%{opacity:1}50%{opacity:.5}}.ss-live{animation:ssPulse 1.4s ease-in-out infinite;}
+</style>
+</head>
+<body>
+
+<p class="note">星塔旅人 GUI 設計 mockup（2026-06-16，含使用者全部調整）。對應 <code>docs/GUI_DESIGN_SPEC.md</code>。雙擊用瀏覽器開即可檢視；需連網載入圖示字體。控件已加 transition；實作用 qfluentwidgets 內建 Fluent 轉場 + QPropertyAnimation 做到整體流暢、不卡感。</p>
+
+<div class="plabel">頁面 1 — 設定頁</div>
+<div class="wrap"><div style="padding:1rem 0;">
+  <h2 class="sr-only">設定頁：頂部頁籤＋設定檔與啟動工具列（開始鈕在設定頁），下方旋鈕分選卡／商店／事件／結算四模組、左右兩欄。</h2>
+  <div class="tabs"><div class="tab on s"><i class="ti ti-adjustments-horizontal tk" style="vertical-align:-2px;margin-right:6px;"></i>設定</div><div class="tab"><i class="ti ti-activity tk" style="vertical-align:-2px;margin-right:6px;"></i>監控</div><div class="tab"><i class="ti ti-tool tk" style="vertical-align:-2px;margin-right:6px;"></i>進階</div></div>
+
+  <div class="bar">
+    <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;"><span style="font-size:13px;color:var(--color-text-secondary);">設定檔</span><div class="sel">預設<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div><span class="mini"><i class="ti ti-plus" style="font-size:13px;"></i>新建</span><span class="mini">另存</span><span class="mini">載入</span><span class="mini">導出</span><span class="mini">匯入</span></div>
+    <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:var(--color-text-secondary);">最大輪數</span><div class="num" style="width:46px;">1</div><span class="btn pri"><i class="ti ti-player-play tk"></i>開始</span><span class="btn"><i class="ti ti-help-circle tk"></i>說明</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="col">
+      <div class="card">
+        <div class="mh"><i class="ti ti-layout-grid tk" style="font-size:17px;color:#534AB7;"></i>選卡</div>
+        <div class="row"><span>決策模式</span><div class="sel">推薦徽章<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row"><span>卡片總等級目標</span><div class="num">78</div></div>
+        <div class="row"><span>升等策略</span><div class="sel">溢出最小<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row"><span class="lab">啟用推薦N級<span class="bt t">測試版</span></span><span class="sw n"><i></i></span></div>
+        <div class="row"><span>required 滿級</span><div class="num">6</div></div>
+        <div class="row off"><span class="lab">弱卡升等門檻<span class="bt adv">進階</span></span><div class="num">0</div></div>
+      </div>
+      <div class="card">
+        <div class="mh"><i class="ti ti-flag tk" style="font-size:17px;color:#185FA5;"></i>結算</div>
+        <div class="row"><span>評分達標門檻</span><div class="num">30</div></div>
+        <div class="row"><span>祕聞全解才達標</span><span class="sw n"><i></i></span></div>
+        <div class="row"><span class="lab">角色潛能加總門檻<span class="sw n" style="width:32px;height:19px;"><i style="width:13px;height:13px;"></i></span></span><div class="num" style="width:62px;opacity:.5;">220</div></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="mh"><i class="ti ti-shopping-cart tk" style="font-size:17px;color:#0F6E56;"></i>商店</div>
+        <div class="row"><span>買法策略</span><div class="sel">先卡後音符<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row"><span>買得起才點</span><span class="sw y"><i></i></span></div>
+        <div class="row"><span class="lab">買卡優惠優先<span class="bt t">測試版</span></span><span class="sw n"><i></i></span></div>
+        <div class="row"><span>買非特價商品</span><span class="sw y"><i></i></span></div>
+        <div class="row"><span>刷新時機</span><div class="sel">買完才刷<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row"><span>刷新從第幾次商店</span><div class="num">1</div></div>
+        <div class="row"><span class="lab">逐次強化/順序<span class="bt adv">每次</span></span><div class="sel">1次→2 2次→3 …<i class="ti ti-chevron-right tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row"><span>強化價上限</span><div class="num">540</div></div>
+        <div class="row off"><span class="lab">音符購買優先序<span class="bt adv">進階</span></span><div class="sel">風＞絕招＞強攻…<i class="ti ti-chevron-right tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row off"><span class="lab">達標後狂買音符<span class="bt adv">進階</span></span><span class="sw n"><i></i></span></div>
+      </div>
+      <div class="card">
+        <div class="mh"><i class="ti ti-dice-5 tk" style="font-size:17px;color:#993C1D;"></i>事件</div>
+        <div class="row"><span>事件策略</span><div class="sel">激進<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div></div>
+        <div class="row"><span>拒消耗音符</span><span class="sw y"><i></i></span></div>
+        <div class="row off"><span class="lab">賭博選錢多<span class="bt adv">進階</span></span><span class="sw y"><i></i></span></div>
+        <div class="row"><span>編輯事件規則</span><span class="mini"><i class="ti ti-edit" style="font-size:13px;"></i>開啟編輯器</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:flex-end;margin-top:1.1rem;"><span class="btn"><i class="ti ti-device-floppy tk"></i>儲存設定</span></div>
+</div></div>
+
+<div class="plabel">頁面 2 — 監控頁（運作時）</div>
+<div class="wrap"><div style="padding:1rem 0;">
+  <h2 class="sr-only">監控頁：頂部工具列在運作時只亮停止鈕；LIVE 狀態、進度 metrics、FSM 聚光燈、協奏音符進度、當前生效設定總覽。</h2>
+  <div class="tabs"><div class="tab"><i class="ti ti-adjustments-horizontal tk" style="vertical-align:-2px;margin-right:6px;"></i>設定</div><div class="tab on m"><i class="ti ti-activity tk" style="vertical-align:-2px;margin-right:6px;"></i>監控</div><div class="tab"><i class="ti ti-tool tk" style="vertical-align:-2px;margin-right:6px;"></i>進階</div></div>
+
+  <div class="bar">
+    <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;"><span style="font-size:13px;color:var(--color-text-secondary);">設定檔</span><div class="sel">預設<i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div></div>
+    <div style="display:flex;align-items:center;gap:8px;"><span class="btn lk"><i class="ti ti-player-play tk"></i>開始</span><span class="btn" style="border-color:#E24B4A;color:#A32D2D;"><i class="ti ti-player-stop tk"></i>停止 (Ctrl+Q)</span></div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:12px 16px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:12px;"><span class="ss-live" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#A32D2D;"><span style="width:9px;height:9px;border-radius:50%;background:#E24B4A;"></span>LIVE</span><div><div style="font-size:16px;font-weight:500;">選潛能</div><div style="font-size:12px;color:var(--color-text-tertiary);">STATE_POTENTIAL_SELECT · 推薦徽章模式</div></div></div>
+    <div style="text-align:right;min-width:120px;"><div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;">辨識信心 0.98</div><div style="height:6px;border-radius:3px;background:var(--color-border-tertiary);overflow:hidden;"><div style="width:98%;height:100%;background:#1D9E75;"></div></div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:14px;">
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;"><div style="font-size:12px;color:var(--color-text-secondary);">商店造訪</div><div style="font-size:22px;font-weight:500;">第 3 次</div></div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;"><div style="font-size:12px;color:var(--color-text-secondary);">卡片總等級</div><div style="font-size:22px;font-weight:500;">66<span style="font-size:13px;color:var(--color-text-tertiary);"> / 78</span></div></div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;"><div style="font-size:12px;color:var(--color-text-secondary);">金錢</div><div style="font-size:22px;font-weight:500;">730</div></div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;"><div style="font-size:12px;color:var(--color-text-secondary);">本輪</div><div style="font-size:22px;font-weight:500;">1<span style="font-size:13px;color:var(--color-text-tertiary);"> / 1</span></div></div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;"><div style="font-size:12px;color:var(--color-text-secondary);">保留目標</div><div style="font-size:15px;font-weight:500;margin-top:5px;">評分 ≥ 30</div></div>
+  </div>
+
+  <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+    <div class="card" style="padding:0.8rem 1.1rem 1rem;">
+      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:10px;">流程進度</div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle-check" style="font-size:17px;color:#1D9E75;"></i>大廳</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle-check" style="font-size:17px;color:#1D9E75;"></i>編隊</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle-check" style="font-size:17px;color:#1D9E75;"></i>準備</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle-check" style="font-size:17px;color:#1D9E75;"></i>快速戰鬥</div>
+        <div class="ss-live" style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:#3C3489;background:#EEEDFE;border-radius:var(--border-radius-md);padding:7px 10px;margin:2px 0;"><i class="ti ti-player-play" style="font-size:17px;"></i>選潛能<span style="margin-left:auto;font-size:11px;color:#534AB7;">當前</span></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle" style="font-size:17px;color:var(--color-border-secondary);"></i>獲得音符</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle" style="font-size:17px;color:var(--color-border-secondary);"></i>隨機事件</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-circle" style="font-size:17px;color:var(--color-border-secondary);"></i>商店</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-tertiary);"><i class="ti ti-flag" style="font-size:17px;color:var(--color-border-secondary);"></i>結算</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="padding:0.7rem 1.1rem 0.9rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--color-text-secondary);margin-bottom:9px;"><span><i class="ti ti-music tk" style="vertical-align:-2px;margin-right:5px;"></i>協奏音符進度</span><i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:12px;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:42px;">風</span><div style="flex:1;height:6px;border-radius:3px;background:var(--color-border-tertiary);overflow:hidden;"><div style="width:22%;height:100%;background:#378ADD;"></div></div><span style="width:42px;text-align:right;color:var(--color-text-secondary);">10/45</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:42px;">專注</span><div style="flex:1;height:6px;border-radius:3px;background:var(--color-border-tertiary);overflow:hidden;"><div style="width:100%;height:100%;background:#1D9E75;"></div></div><span style="width:42px;text-align:right;color:#0F6E56;">15/15</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:42px;">絕招</span><div style="flex:1;height:6px;border-radius:3px;background:var(--color-border-tertiary);overflow:hidden;"><div style="width:67%;height:100%;background:#378ADD;"></div></div><span style="width:42px;text-align:right;color:var(--color-text-secondary);">20/30</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:42px;">強攻</span><div style="flex:1;height:6px;border-radius:3px;background:var(--color-border-tertiary);overflow:hidden;"><div style="width:40%;height:100%;background:#378ADD;"></div></div><span style="width:42px;text-align:right;color:var(--color-text-secondary);">12/30</span></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0.7rem 1.1rem 0.9rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--color-text-secondary);margin-bottom:9px;"><span><i class="ti ti-list-check tk" style="vertical-align:-2px;margin-right:5px;"></i>當前生效設定總覽</span><i class="ti ti-chevron-down tk" style="color:var(--color-text-tertiary);"></i></div>
+        <div style="font-size:12px;display:flex;flex-direction:column;gap:5px;color:var(--color-text-secondary);">
+          <div style="display:flex;justify-content:space-between;"><span>決策模式</span><span style="color:var(--color-text-primary);">推薦徽章</span></div>
+          <div style="display:flex;justify-content:space-between;"><span>升等策略</span><span style="color:var(--color-text-primary);">溢出最小</span></div>
+          <div style="display:flex;justify-content:space-between;"><span>事件策略</span><span style="color:var(--color-text-primary);">激進</span></div>
+          <div style="display:flex;justify-content:space-between;"><span>商店買法</span><span style="color:var(--color-text-primary);">先卡後音符</span></div>
+          <div style="display:flex;justify-content:space-between;"><span>評分達標門檻</span><span style="color:var(--color-text-primary);">30</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="plabel">頁面 3 — 進階頁（速度 / 感知 / 硬體）</div>
+<div class="wrap"><div style="padding:1rem 0;">
+  <div class="tabs"><div class="tab"><i class="ti ti-adjustments-horizontal tk" style="vertical-align:-2px;margin-right:6px;"></i>設定</div><div class="tab"><i class="ti ti-activity tk" style="vertical-align:-2px;margin-right:6px;"></i>監控</div><div class="tab on a"><i class="ti ti-tool tk" style="vertical-align:-2px;margin-right:6px;"></i>進階</div></div>
+  <div style="display:flex;align-items:center;gap:10px;background:#FAEEDA;border-radius:var(--border-radius-md);padding:10px 14px;margin-bottom:14px;"><span style="display:inline-flex;width:18px;height:18px;border:1.5px solid #BA7517;border-radius:4px;"></span><span style="font-size:13px;color:#854F0B;">我了解調整以下「危險」項可能讓 bot 失常（勾選後才解鎖鎖定的旋鈕）</span></div>
+  <div class="card" style="padding:0.3rem 1.25rem 0.8rem;">
+    <div class="row"><span>輪詢間隔（秒）</span><div class="num">1.0</div></div>
+    <div class="row"><span>拿走沉澱（秒）</span><div class="num">0.5</div></div>
+    <div class="row"><span>OCR 快取</span><span class="sw y"><i></i></span></div>
+    <div class="row off"><span class="lab"><i class="ti ti-lock tk"></i>自適應沉澱<span class="bt d">危險</span></span><span class="sw n lk"><i></i></span></div>
+    <div class="row off"><span class="lab"><i class="ti ti-lock tk"></i>偵測器版本<span class="bt d">危險</span></span><div class="sel lk" style="opacity:.5;">v2<i class="ti ti-chevron-down tk"></i></div></div>
+    <div class="row off"><span class="lab"><i class="ti ti-lock tk"></i>擷取模式<span class="bt d">危險</span></span><div class="sel lk" style="opacity:.5;">auto<i class="ti ti-chevron-down tk"></i></div></div>
+  </div>
+</div></div>
+
+<div class="plabel">設定檔管理（對話框）</div>
+<div class="dim">
+  <div class="modal" style="width:430px;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:500;margin-bottom:4px;"><i class="ti ti-files" style="font-size:18px;color:#534AB7;"></i>設定檔管理</div>
+    <div style="font-size:12px;color:var(--color-text-tertiary);margin-bottom:14px;">多套設定可命名、導出分享（開源後社群可交流套組）</div>
+    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:13px;"><span class="lab"><i class="ti ti-check tk" style="color:#1D9E75;"></i>預設<span style="font-size:11px;color:var(--color-text-tertiary);">目前</span></span><i class="ti ti-download tk" style="color:var(--color-text-tertiary);"></i></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:13px;color:var(--color-text-secondary);"><span>激進衝分流</span><span style="display:flex;gap:10px;color:var(--color-text-tertiary);"><i class="ti ti-download tk"></i><i class="ti ti-trash tk"></i></span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:13px;color:var(--color-text-secondary);"><span>保守省錢流</span><span style="display:flex;gap:10px;color:var(--color-text-tertiary);"><i class="ti ti-download tk"></i><i class="ti ti-trash tk"></i></span></div>
+    </div>
+    <div style="display:flex;gap:8px;"><span class="btn"><i class="ti ti-plus tk"></i>新建命名</span><span class="btn"><i class="ti ti-upload tk"></i>從檔案匯入</span></div>
+  </div>
+</div>
+
+<div class="plabel">事件編輯器（對話框）</div>
+<div class="dim" style="min-height:400px;">
+  <div class="modal">
+    <div style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:500;margin-bottom:4px;"><i class="ti ti-edit" style="font-size:18px;color:#993C1D;"></i>編輯事件規則</div>
+    <div style="font-size:12px;color:var(--color-text-tertiary);margin-bottom:14px;line-height:1.6;">命中比對字 → 直接選指定選項；沒命中 → 走預設策略評分。遊戲更新出新事件時自己加一條，bot 就認得。</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+      <div style="border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:10px 12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;"><span class="lab" style="font-size:13px;font-weight:500;"><span class="sw y" style="width:30px;height:18px;"><i style="width:13px;height:13px;"></i></span>猜數字 quiz</span><span style="display:flex;gap:10px;color:var(--color-text-tertiary);"><i class="ti ti-arrow-up tk"></i><i class="ti ti-arrow-down tk"></i><i class="ti ti-edit tk"></i><i class="ti ti-trash tk"></i></span></div>
+        <div style="font-size:12px;display:flex;flex-direction:column;gap:3px;"><div><span style="color:var(--color-text-tertiary);">問題　</span>畫面出現「最喜歡哪個數字」</div><div><span style="color:var(--color-text-tertiary);">選項　</span>選含「總是如此 / 3」的選項<span style="color:var(--color-text-tertiary);">　· 正解 3</span></div></div>
+      </div>
+      <div style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;"><span class="lab" style="font-size:13px;font-weight:500;"><span class="sw y" style="width:30px;height:18px;"><i style="width:13px;height:13px;"></i></span>神奇遊戲機</span><span style="display:flex;gap:10px;color:var(--color-text-tertiary);"><i class="ti ti-arrow-up tk"></i><i class="ti ti-arrow-down tk"></i><i class="ti ti-edit tk"></i><i class="ti ti-trash tk"></i></span></div>
+        <div style="font-size:12px;display:flex;flex-direction:column;gap:3px;"><div><span style="color:var(--color-text-tertiary);">問題　</span>畫面出現「真的可以玩嗎」</div><div><span style="color:var(--color-text-tertiary);">選項　</span>選含「真的可以玩嗎?」的選項<span style="color:var(--color-text-tertiary);">　· 交易事件玩一把</span></div></div>
+      </div>
+    </div>
+    <span class="btn" style="border-style:dashed;margin-bottom:14px;"><i class="ti ti-plus tk"></i>新增規則</span>
+    <div style="display:flex;justify-content:flex-end;gap:8px;border-top:0.5px solid var(--color-border-tertiary);padding-top:12px;"><span class="btn">取消</span><span class="btn pri">儲存</span></div>
+  </div>
+</div>
+
+</body>
+</html>

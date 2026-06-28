@@ -1,0 +1,16 @@
+# 星塔旅人自動探索 bot — 執行期相依套件
+# 版本下限為開發測試基準;PyQt 限定 5.x(PyQt6 不相容)
+numpy>=1.24
+opencv-python>=4.8
+pillow>=10.0
+pywin32>=306
+PyYAML>=6.0
+mss>=9.0
+pydirectinput>=1.0.4
+PyQt5>=5.15,<6
+PyQt-Fluent-Widgets>=1.5
+easyocr>=1.7
+zhconv>=1.4
+
+# 選用:DXcam 為截圖第三段備援(PrintWindow / mss 都失敗時才用),非必要
+# dxcam
